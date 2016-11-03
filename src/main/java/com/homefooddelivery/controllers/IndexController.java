@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.homefooddelivery.models.Product;
 import com.homefooddelivery.models.ProductDao;
+import com.homefooddelivery.services.IProductServices;
 
 @Controller
 public class IndexController {
@@ -19,5 +20,8 @@ public class IndexController {
 	
 	@Autowired
 	private ProductDao productDao;
+	
+	@Autowired
+	private IProductServices productServices;
 
 }
