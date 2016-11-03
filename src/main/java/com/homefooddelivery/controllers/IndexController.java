@@ -2,26 +2,24 @@ package com.homefooddelivery.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.homefooddelivery.models.Product;
 import com.homefooddelivery.models.ProductDao;
-import com.homefooddelivery.services.IProductServices;
 
 @Controller
 public class IndexController {
 	
 	@RequestMapping("/")
-	String index(){
+	String index(Model model){
 		Iterable<Product> findAll = productDao.findAll();
+		model.addAttribute("products", findAll);
 		return "index";
 	}
 	
 	
 	@Autowired
 	private ProductDao productDao;
-	
-	@Autowired
-	private IProductServices productServices;
 
 }
