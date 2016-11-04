@@ -6,7 +6,7 @@ $(document).ready(function(){
         	var resHtml = '';
         	$.each( data, function( key, value ) {
         		var calcPrecio = value.quantity * value.product.precio;
-        		resHtml = resHtml + ('<p>' + value.quantity + ' ' + value.product.nombre + ' - Precio unidad: ' + value.product.precio + '€' + ' - Precio total: ' + calcPrecio +'€ </p>');
+        		resHtml = resHtml + ('<p>' + value.quantity + ' ' + value.product.nombre + ' - Precio unidad: ' + value.product.precio + '€/' + value.product.unidad + ' - Precio total: ' + calcPrecio +'€ </p>');
         	});
         	$('#results').html(resHtml)
         });
