@@ -62,5 +62,10 @@ public class Product {
 		this.precio = precio;
 		this.unidad = unidad;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", unidad=" + unidad + "]";
+	}
 	    
 }

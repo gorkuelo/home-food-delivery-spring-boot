@@ -10,9 +10,25 @@
 	<form action="/searchWithFilter">
 		<h1>Comida casera a domicilio</h1>
 		<h2>Spring-boot y thymeleaf</h2>
+		
+		<table>
+			<tr>
+				<th>Producto</th>
+				<th>Precio</th>
+				<th>Cantidad</th>
+			</tr>
+			<tr th:each="product,status : ${products}">
+				<td th:text="${product.nombre}"></td>
+				<td th:text="${product.precio} + ' €/' + ${product.unidad}"> </td>
+				<td><input type="text"/></td>
+			</tr>
+			
+			
+		</table>
 		<span>
-			<input type="button" value="Buscar" id="searchButton"/>
+			<input type="button" value="Pedir comida" id="searchButton"/>
 		</span>
+
 	</form>
 </body>
 </html>
