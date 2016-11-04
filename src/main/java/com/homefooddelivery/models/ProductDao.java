@@ -9,4 +9,6 @@ public interface ProductDao extends CrudRepository<Product, Integer> {
 	
 	Iterable<Product> findAll();
 	
+	Product findById(int id);
+	
 }
