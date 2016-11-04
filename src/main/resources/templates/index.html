@@ -7,7 +7,7 @@
 	<script th:src="@{js/index.js}"></script>
 </head>
 <body>
-	<form action="/searchWithFilter">
+	<form action="#" th:action="@{/orderHomeFood}" method="get">
 		<h1>Comida casera a domicilio</h1>
 		<h2>Spring-boot y thymeleaf</h2>
 		
@@ -20,13 +20,13 @@
 			<tr th:each="product,status : ${products}">
 				<td th:text="${product.nombre}"></td>
 				<td th:text="${product.precio} + ' €/' + ${product.unidad}"> </td>
-				<td><input type="text"/></td>
+				<td><input type="text" th:id="'product_' + ${product.id}"/></td>
 			</tr>
 			
 			
 		</table>
 		<span>
-			<input type="button" value="Pedir comida" id="searchButton"/>
+			<input type="submit" value="Pedir comida" id="searchButton"/>
 		</span>
 
 	</form>

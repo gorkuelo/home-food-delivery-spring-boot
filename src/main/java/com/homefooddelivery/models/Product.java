@@ -56,6 +56,14 @@ public class Product {
 		this.unidad = unidad;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Product(String nombre, long precio, String unidad) {
 		super();
 		this.nombre = nombre;
