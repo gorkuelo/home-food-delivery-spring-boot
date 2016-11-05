@@ -1,21 +1,16 @@
-# spring-boot-with-thymeleaf
+EXPORT DE LA BBDD
+
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.4.10
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 04-11-2016 a las 13:32:41
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 5.6.24
+-- Servidor: localhost
+-- Tiempo de generación: 05-11-2016 a las 12:02:32
+-- Versión del servidor: 5.5.42
+-- Versión de PHP: 5.6.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `homefooddelivery`
@@ -31,24 +26,25 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `precio` decimal(10,0) NOT NULL,
-  `unidad` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `unidad` varchar(128) NOT NULL,
+  `tipo` varchar(256) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`id`, `nombre`, `precio`, `unidad`) VALUES
-(1, 'Ensalada de espinacas', '1', '100gr'),
-(2, 'Tortellini alla carbonara', '1', '100gr'),
-(3, 'Pollo al curry', '1', '100gr'),
-(4, 'Arroz con verduras', '1', '100gr'),
-(5, 'Pizza primavera', '2', 'ud'),
-(6, 'Carne estofada', '2', '100gr'),
-(7, 'Agua', '1', 'ud'),
-(8, 'Zumo de naranja', '2', 'ud'),
-(9, 'Manzana', '2', 'ud'),
-(10, 'Tarta de queso', '2', 'ud');
+INSERT INTO `products` (`id`, `nombre`, `precio`, `unidad`, `tipo`) VALUES
+(1, 'Ensalada de espinacas', '1', '100gr', 'principal'),
+(2, 'Tortellini alla carbonara', '1', '100gr', 'principal'),
+(3, 'Pollo al curry', '1', '100gr', 'principal'),
+(4, 'Arroz con verduras', '1', '100gr', 'principal'),
+(5, 'Pizza primavera', '2', 'ud', 'principal'),
+(6, 'Carne estofada', '2', '100gr', 'principal'),
+(7, 'Agua', '1', 'ud', 'bebida'),
+(8, 'Zumo de naranja', '2', 'ud', 'bebida'),
+(9, 'Manzana', '2', 'ud', 'postre'),
+(10, 'Tarta de queso', '2', 'ud', 'postre');
 
 --
 -- Índices para tablas volcadas
@@ -68,7 +64,4 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
