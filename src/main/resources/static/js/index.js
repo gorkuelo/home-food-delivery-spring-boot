@@ -4,14 +4,30 @@ $(document).ready(function(){
         $.get( "orderHomeFood?orders="+orders, function( data ) {
         	$( ".result" ).show();
         	var resHtml = '';
-        	$.each( data, function( key, value ) {
+        	var totalWithoutDiscounts = 0;
+        	$.each( data.listDeliveries, function( key, value ) {
         		var calcPrecio = value.quantity * value.product.precio;
+        		totalWithoutDiscounts = totalWithoutDiscounts + calcPrecio;
         		resHtml = resHtml + ('<p>' + value.quantity + ' ' + value.product.nombre + ' - Precio unidad: ' + value.product.precio + '€/' + value.product.unidad + ' - Precio total: ' + calcPrecio +'€ </p>');
         	});
         	$('#results').html(resHtml)
+        	$('#totalWithoutDiscounts').text(totalWithoutDiscounts);
+        	var resDiscountsHtml = '';
+        	var totalWithDiscounts = 0;
+        	$.each( data.listDeliveries, function( key, value ) {
+        		totalWithDiscounts = totalWithDiscounts + value.price;
+        		resDiscountsHtml = resDiscountsHtml + ('<p>' + value.quantity + ' ' + value.product.nombre + ' - Precio unidad: ' + value.product.precio + '€/' + value.product.unidad + ' - Precio total con descuentos: ' + value.price +'€ </p>');
+        	});
+        	var discountPercent = 0;
+        	if (data.hasDiscount) {
+        		discountPercent = totalWithDiscounts * 0.2;
+        		resDiscountsHtml = resDiscountsHtml + ('<p>' + 'Descuento de 20% adicional por combinar plato principal, bebida y postre: - '  + discountPercent +'€ </p>');
+        	}
+        	$('#resultsDiscounts').html(resDiscountsHtml);
+        	$('#totalWithDiscounts').text(totalWithDiscounts - discountPercent);
         });
     }
-    $("#searchButton").click(function(){
+    $("#orderFood").click(function(){
     	var orders = '',
     	index, orderField, existingIds;
     	existingIds = document.getElementsByName('existingIds');

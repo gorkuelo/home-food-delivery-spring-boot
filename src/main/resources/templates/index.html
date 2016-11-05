@@ -13,29 +13,44 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script th:src="@{js/index.js}"></script>
+	<link th:href="@{/css/styles.css}" href="/css/styles.css"  rel="stylesheet" type="text/css"  />
 </head>
 <body>
 	<div class="container">
-		<div class="orderProducts">
+		<div class="orderProducts margin-bottom">
 			<div class="page-header">
 				<h1>Comida casera a domicilio</h1>
 			</div>
-			<table class="table-striped">
+			<div class="margin-bottom">
+				<p> Nuestras ofertas: </p>
+				<p class="bg-success margin-bottom">20% de descuento si eliges un plato principal, bebida y postre.</p>
+				<p class="bg-success margin-bottom">3x2 si te llevas 3 unidades del mismo producto.</p>		
+			</div>
+			<table class="table-striped margin-bottom">
 				<tr>
 					<th>Producto</th>
 					<th>Precio</th>
 					<th>Cantidad</th>
+					<th>Tipo de plato</th>
 				</tr>
 				<tr th:each="product,status : ${products}">
 					<input type="hidden" th:value="${product.id}" name="existingIds"/>
 					<td th:text="${product.nombre}"></td>
 					<td th:text="${product.precio} + ' €/' + ${product.unidad}"> </td>
 					<td><input type="number" th:id="'product_' + ${product.id}"/></td>
+					<span th:switch="${product.tipo}">
+						<td th:case="'principal'" class="bg-info" th:text="${product.tipo}"/>
+						<td th:case="'bebida'" class="bg-danger" th:text="${product.tipo}"/>
+						<td th:case="'postre'" class="bg-warning" th:text="${product.tipo}"/>
+					</span>
+					
 				</tr>			
 			</table>
-			<div>
-				<input type="button" value="Pedir comida" id="searchButton"/>
+			
+			<div  class="margin-bottom">
+				<input type="button" class="btn btn-lg btn-primary" value="Pedir comida" id="orderFood"/>
 			</div>
+			
 		</div>
 		<div class="result">
 			<div class="panel panel-success"> 
@@ -43,6 +58,17 @@
 					<h3 class="panel-title">Resumen del pedido</h3> 
 				</div> 
 				<div class="panel-body"> <span id="results"/> </div> 
+				<h5 class="align-right">Total sin descuentos: <span id="totalWithoutDiscounts"></span>€</h5>
+			</div>
+			<div class="panel panel-success"> 
+				<div class="panel-heading"> 
+					<h3 class="panel-title">Descuentos aplicados</h3> 
+				</div> 
+				<div class="panel-body"> <span id="resultsDiscounts"/> </div> 
+				
+				<span class="align-right">
+					<h5 class="text-success">Total con descuentos: <span id="totalWithDiscounts"></span>€</h5>
+				</span>
 			</div>
 		</div>
 	</div>

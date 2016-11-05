@@ -23,8 +23,9 @@ public class Product {
 	  
 	@NotNull
 	private String unidad;
-
-  // Public methods
+	
+	@NotNull
+	private String tipo;
 	  
 	public Product() { }
 	
@@ -64,16 +65,27 @@ public class Product {
 		this.id = id;
 	}
 
-	public Product(String nombre, long precio, String unidad) {
-		super();
-		this.nombre = nombre;
-		this.precio = precio;
-		this.unidad = unidad;
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", unidad=" + unidad + "]";
+		return "Product [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", unidad=" + unidad + ", tipo="
+				+ tipo + "]";
+	}
+
+	public Product(int id, String nombre, long precio, String unidad, String tipo) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.precio = precio;
+		this.unidad = unidad;
+		this.tipo = tipo;
 	}
 	    
 }
